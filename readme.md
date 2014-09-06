@@ -14,40 +14,43 @@ checks for unique values.
 To use the form validator, first create a form class that extends ```SRLabs\Validator\Validation\FormValidator```.  This
 class will specify the rules and custom messages you want to use when validating this form.  For example:
 
-    <?php namespace Epiphyte\Forms;
-    use SRLabs\Validator\Validation\FormValidator;
+```php
+<?php namespace Epiphyte\Forms;
+use SRLabs\Validator\Validation\FormValidator;
 
-    class UpdateProductionForm extends FormValidator {
+class UpdateProductionForm extends FormValidator {
 
-        protected $rules = array(
-            'name' => 'required|alpha|unique:productions',
-            'author' => 'required'
-        );
+    protected $rules = array(
+        'name' => 'required|alpha|unique:productions',
+        'author' => 'required'
+    );
 
-        protected $messages = array(
-            'name.unique' => 'There is already a production with that name.'
-        );
-    }
+    protected $messages = array(
+        'name.unique' => 'There is already a production with that name.'
+    );
+}
+```
 
 Next, inject your custom form class into the controller handling your form submission.
 
-    <?php
+```php
+<?php
 
-    use Epiphyte\Forms\CreateProductionForm;
-    use Epiphyte\Forms\UpdateProductionForm;
+use Epiphyte\Forms\CreateProductionForm;
+use Epiphyte\Forms\UpdateProductionForm;
 
-    class ProductionController extends \BaseController {
+class ProductionController extends \BaseController {
 
-        protected $createProductionForm;
-        protected $updateProductionForm;
+    protected $createProductionForm;
+    protected $updateProductionForm;
 
-        /**
-         * @param CreateProductionForm $createProductionForm
-         */
-        public function __construct(CreateProductionForm $createProductionForm, UpdateProductionForm $updateProductionForm)
-        {
-            $this->createProductionForm = $createProductionForm;
-            $this->updateProductionForm = $updateProductionForm;
-        }
-     }
-
+    /**
+     * @param CreateProductionForm $createProductionForm
+     */
+    public function __construct(CreateProductionForm $createProductionForm, UpdateProductionForm $updateProductionForm)
+    {
+        $this->createProductionForm = $createProductionForm;
+        $this->updateProductionForm = $updateProductionForm;
+    }
+}
+```
