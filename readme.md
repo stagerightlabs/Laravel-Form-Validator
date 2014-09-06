@@ -3,8 +3,8 @@
 Inspired by [Laracasts' Form Validator](https://github.com/laracasts/Validation) this package provides an easy method for validating form data, including
 checks for unique values.
 
- ### Installation
- This package should be installed via composer:
+### Installation
+This package should be installed via composer:
 
 1. Add ```"srlabs/validator": "1.*"``` to your ```composer.json``` file.
 2. Run ```composer update```
