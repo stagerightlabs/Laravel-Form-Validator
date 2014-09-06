@@ -1,0 +1,27 @@
+{
+    "name": "srlabs/validator",
+    "description": "A Form Validation Class for Laravel 4",
+    "license": "MIT",
+    "keywords": ["laravel", "validation"],
+    "authors": [
+        {
+            "name": "Ryan C. Durham",
+            "email": "ryan@stagerightlabs.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/validation": "4.2.*",
+        "illuminate/support": "4.2.*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "2.2.*",
+        "phpspec/phpspec": "2.0.*@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "SRLabs\\Validator\\": "src/Validator"
+        }
+    },
+    "minimum-stability": "stable"
+}
