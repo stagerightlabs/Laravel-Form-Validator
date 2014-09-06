@@ -16,6 +16,7 @@ class will specify the rules and custom messages you want to use when validating
 
 ```php
 <?php namespace Epiphyte\Forms;
+
 use SRLabs\Validator\Validation\FormValidator;
 
 class UpdateProductionForm extends FormValidator {
@@ -47,10 +48,55 @@ class ProductionController extends \BaseController {
     /**
      * @param CreateProductionForm $createProductionForm
      */
-    public function __construct(CreateProductionForm $createProductionForm, UpdateProductionForm $updateProductionForm)
+    public function __construct(
+        CreateProductionForm $createProductionForm,
+        UpdateProductionForm $updateProductionForm)
     {
         $this->createProductionForm = $createProductionForm;
         $this->updateProductionForm = $updateProductionForm;
     }
+
+    // ...
+}
+```
+
+To validate form data, do this in your controller method:
+
+```php
+public function store()
+{
+    // Gather the Data
+    $data = Input::only('name', 'author');
+
+    // Validate the Form
+    $this->createProductionForm->validate($data);
+
+    // Create the Production
+    Epiphyte\Production::create($data);
+
+    Session::flash('success', 'Production Added');
+    return Redirect::action('ProductionController@index');
+}
+```
+
+Note that if the validation fails, an exception will be thrown (and subsequently caught) forcing a redirect back to the
+form, sending along the error messages and old input as well.
+
+To validate a field containing a ```unique``` rule, pass the corresponding object to the form class:
+
+```php
+public function update($id)
+{
+    $production = Epiphyte\Production::find($id);
+    $data = Input::only('name', 'author');
+
+    $this->updateProductionForm->validate($data, $production);
+
+    $production->name = $data['name'];
+    $production->author = $data['author'];
+    $production->save();
+
+    Session::flash('success', 'Production Updated');
+    return Redirect::action('ProductionController@index');
 }
 ```
