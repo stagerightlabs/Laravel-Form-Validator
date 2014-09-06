@@ -3,6 +3,7 @@
     "description": "A Form Validation Class for Laravel 4",
     "license": "MIT",
     "keywords": ["laravel", "validation"],
+    "homepage": "http://stagerightlabs.com/projects/laravel-form-validator",
     "authors": [
         {
             "name": "Ryan C. Durham",
