@@ -1,8 +1,11 @@
-<?php namespace SRLabs\Validator\Exceptions;
+<?php
+
+namespace SRLabs\Validator\Exceptions;
 
 use Exception;
 
-class FormValidationFailedException extends Exception {
+class FormValidationFailedException extends Exception
+{
 
     protected $errors;
 
@@ -12,8 +15,12 @@ class FormValidationFailedException extends Exception {
      */
     public function __construct($message, $errors)
     {
-        $this->message = $message;
+        $this->message = $message . '. ';
         $this->errors = $errors;
+
+        foreach ($this->errors->all() as $message) {
+            $this->message .= ' ' . $message;
+        }
     }
 
     /**
@@ -23,4 +30,4 @@ class FormValidationFailedException extends Exception {
     {
         return $this->errors;
     }
-} 
+}
