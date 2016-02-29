@@ -11,16 +11,19 @@ class FormValidationFailedException extends Exception
 
     /**
      * @param string $message
-     * @param int    $errors
+     * @param array    $errors
      */
     public function __construct($message, $errors)
     {
         $this->message = $message . '. ';
         $this->errors = $errors;
 
-        foreach ($this->errors->all() as $message) {
-            $this->message .= ' ' . $message;
+        if ($this->errors) {
+            foreach ($this->errors->all() as $message) {
+                $this->message .= ' ' . $message;
+            }
         }
+
     }
 
     /**
