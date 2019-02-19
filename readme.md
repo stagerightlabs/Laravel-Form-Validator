@@ -1,7 +1,10 @@
-## Laravel Form Validator
+## Laravel Form Validator - Deprecated
 
-Inspired by [Laracasts' Form Validator](https://github.com/laracasts/Validation) this package provides an easy method for validating form data, including
-checks for unique values.
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+Inspired by [Laracasts' Form Validator](https://github.com/laracasts/Validation) this package provides an easy method for validating form data, including checks for unique values.   
+
+This package is no longer being maintained.
 
 ### Installation
 This package should be installed via composer:
